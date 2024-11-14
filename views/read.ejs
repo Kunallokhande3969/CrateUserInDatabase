@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head> 
+ <body class="bg-black text-white">
+    <div class="flex border-b items-center justify-between py-[2vw] px-[2vw] mt-[1.3vw]" id="nav">
+         <a class="text-2xl font-bold" href="/">User</a>
+        <div class="flex gap-3">
+            <a href="/" class="text-2xl">Home</a>
+            <a href="/create" class="text-2xl tracking-tighter"> Create New User</a>
+        </div>
+     </div>
+     <div class="m-[1.3vw] flex flex-wrap text-black">        
+        <% if(Users.length> 0) { %>
+            <% Users.forEach(u=> { %>
+                <div class="user w-52 p-2 bg-zinc-700 rounded-lg m-2 ">
+                    <div class="w-full h-40 bg-blue-600 rounded-lg overflow-hidden">
+                        <img src="<%= u.image %>" alt="#" class="h-full w-full object-cover  object-top bg-center ">
+                    </div>
+                    <h1 class="text-white">
+                        <%= u.name %>
+                    </h1>
+                    <h2 class="text-zinc-400">
+                        <%= u.email %>
+                    </h2>
+                    <div class="flex gap-6 mt-[1.2vw]">
+                        <a href="/edit/<%= u._id %>" class="text-blue-600">Update</a>
+                        <a href="/delete/<%= u._id %>" class="text-blue-600">Delete</a>
+                    </div>
+                </div>
+                <% }); %>
+                    <% } else { %>
+                        <h1 class="text-white">No Users Yet....</h1>
+                     <% } %>
+    </div>
+</body>
+</html>
+
+
